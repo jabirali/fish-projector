@@ -17,9 +17,11 @@ function venv -d 'Python virtual environments'
 		echo "Creating virtual environment."
 		python3 -m venv "$venv"
 		
-		# Bootstrap the venv.
-		echo "Setting up virtual environment."
-		pip3 install black poetry python-language-server[all]
+		if [ -n "$projector_pip" ]
+			# Bootstrap the venv.
+			echo "Setting up virtual environment."
+			pip3 install $projector_pip
+		end
 	end
 	
 	# Activate the venv in any case.
