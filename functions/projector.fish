@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-function project -d 'Open project'
+function projector -d 'Open project'
 	# Check that variables are set.
 	if [ -z "$projector_path" ]
 		echo 'You need to set $projector_path.'
