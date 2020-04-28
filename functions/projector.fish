@@ -44,4 +44,3 @@ function projector -d 'Open project'
 		end
 	end
 end
-
