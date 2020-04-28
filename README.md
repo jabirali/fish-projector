@@ -1,8 +1,8 @@
 # Fish Projector
 
-Fish plugin for managing code projects. Currently, it only works with 
-Git and Python projects, but it may be generalized later. Feel free 
-to send a pull request if you have some suggestions for that.
+Fish plugin for managing code projects. Currently, it only handles
+Git and Python projects, but may be generalized in the future. Feel 
+free to send a pull request if you have some suggestions for that.
 
 Basically, typing `p` or `projector` in Fish lets you fuzzy-search for
 Git projects in what you define as `$projector_dir` using `fd` and `fzf`.
