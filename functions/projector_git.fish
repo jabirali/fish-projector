@@ -9,7 +9,7 @@ function projector_git -d 'Create Git project'
 	
 	# Check command line arguments.
 	if [ -z "$argv" ]
-		echo 'Please to provide a project name.'
+		echo 'Please provide a project name.'
 		return 1
 	end
 	

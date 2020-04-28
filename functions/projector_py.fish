@@ -6,7 +6,7 @@ function projector_py -d 'Create Python project'
 	
 	# Create a virtualenv.
 	mkdir -p "$HOME/.virtualenvs" || return 1
-	set -l venv "$HOME/.virtualenvs/$name"
+	set -l venv "$HOME/.virtualenvs/$argv"
 	if [ ! -d "$venv" ]
 		# Create the venv itself.
 		echo ":: Creating virtualenv."
