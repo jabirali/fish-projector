@@ -21,7 +21,7 @@ function projector_git -d 'Create Git project'
 	end
 	
 	# Create the new project.
-	echo ":: Creating Git project."
+	echo -e "\n\e[1m:: Creating Git project\e[0m"
 	mkdir -p "$dir" || return 1
 	cd "$dir"       || return 1
 	git init .      || return 1

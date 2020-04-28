@@ -9,17 +9,17 @@ function projector_py -d 'Create Python project'
 	set -l venv "$HOME/.virtualenvs/$argv"
 	if [ ! -d "$venv" ]
 		# Create the venv itself.
-		echo ":: Creating virtualenv."
+		echo -e "\n\e[1m:: Creating virtualenv\e[0m"
 		python3 -m venv "$venv"
 	end
 	
 	# Activate virtualenv.
-	echo ":: Activating virtualenv."
+	echo -e "\n\e[1m:: Activating virtualenv\e[0m"
 	source "$venv/bin/activate.fish"
 	
 	# Setup the virtualenv.
 	if [ -n "$projector_pip" ]
-		echo ":: Setting up virtualenv."
+		echo -e "\n\e[1m:: Setting up virtualenv\e[0m"
 		pip3 install $projector_pip
 	end
 end
