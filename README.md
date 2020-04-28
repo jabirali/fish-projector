@@ -1,15 +1,15 @@
 # Fish Projector
 
-Fish plugin for managing code projects. Currently, it only handles
-Git and Python projects, but may be generalized in the future. Feel 
-free to send a pull request if you have some suggestions for that.
+Fish plugin for managing code projects. Currently, the plugin only handles
+Git and Python projects, but it may perhaps be generalized in the future.
 
-Basically, typing `p` or `projector` in Fish lets you fuzzy-search for
-Git projects in what you define as `$projector_dir` using `fd` and `fzf`.
-As a preview, you get to see the `README` file of each of your projects.
-When you select a projects, you `cd` into it. If a corresponding virtual 
-environment exists in `~/.virtualenvs/`, it is automatically activated.
-Thus, this works as a quick and efficient command-line project manager.
+Basically, this plugin lets you type `p` or `projector` in Fish to fuzzy-search
+for Git projects in your `$projector_dir` via `fd` + `fzf`. As a preview, you get
+to see the `README` file of each project directory, with syntax highlighting of
+`README.md` and `README.org` files if you have `bat` installed. When you then
+select a projects, `projector` will `cd` into it for you. If a virtual environment
+with a matching name exists in `~/.virtualenvs/`, it is automatically activated.
+Thus, this plugin works as a quick and efficient command-line project switcher.
 
 To create new projects, you can use the functions `projector_py` for a
 Python + Git project or `projector_git` for a pure Git project. If you
