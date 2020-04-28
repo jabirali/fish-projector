@@ -4,7 +4,7 @@ function projector -d 'Open project'
 	# Check that variables are set.
 	if [ ! -d "$projector_dir" ]
 		echo 'You need to set $projector_dir.'
-		exit 1
+		return 1
 	end
 	
 	# Check what previewer to use.
