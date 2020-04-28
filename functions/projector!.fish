@@ -16,13 +16,13 @@ function projector! -d 'Create project'
 	end
 	
 	# Create the new project.
-	echo "Creating project."
+	echo ":: Creating project."
 	mkdir -p "$dir" || return 1
 	
-	echo "Opening project."
+	echo ":: Opening project."
 	cd "$dir" || return 1
 	
-	echo "Setting up Git."
+	echo ":: Setting up Git."
 	git init . || return 1
 	
 	# Create a virtualenv.
@@ -30,17 +30,17 @@ function projector! -d 'Create project'
 	set -l venv "$HOME/.virtualenvs/$name"
 	if [ ! -d "$venv" ]
 		# Create the venv itself.
-		echo "Creating virtualenv."
+		echo ":: Creating virtualenv."
 		python3 -m venv "$venv"
 	end
 	
+	# Activate virtualenv.
+	echo ":: Activating virtualenv."
+	source "$venv/bin/activate.fish"
+	
 	# Setup the virtualenv.
 	if [ -n "$projector_pip" ]
-		echo "Setting up virtualenv."
+		echo ":: Setting up virtualenv."
 		pip3 install $projector_pip
 	end
-	
-	# Activate virtualenv.
-	echo "Activating virtualenv."
-	source "$venv/bin/activate.fish"
 end

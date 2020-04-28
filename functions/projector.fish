@@ -32,14 +32,14 @@ function projector -d 'Open project'
 		cd "$dir"
 		set -l name (basename (pwd))
 		set -l venv ~/.virtualenvs/$name
-		echo "Switching to \"$name\"."
+		echo ":: Switching to \"$name\"."
 		
 		# Load associated virtualenv.
 		if [ -e "$venv" ]
-			echo "Activating virtualenv."
+			echo ":: Activating virtualenv."
 			source $venv/bin/activate.fish
 		else if type -q deactivate
-			echo "Deactivating virtualenv."
+			echo ":: Deactivating virtualenv."
 			deactivate
 		end
 	end
