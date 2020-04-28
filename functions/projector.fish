@@ -2,8 +2,8 @@
 
 function projector -d 'Open project'
 	# Check that variables are set.
-	if [ -z "$projector_path" ]
-		echo 'You need to set $projector_path.'
+	if [ ! -d "$projector_dir" ]
+		echo 'You need to set $projector_dir.'
 		exit 1
 	end
 	
@@ -18,7 +18,7 @@ function projector -d 'Open project'
 	
 	# Discover and select projects.
 	set -l dir \
-		( fd -HIt d '^\.git$' $projector_path \
+		( fd -HIt d '^\.git$' $projector_dir  \
 		| sed 's|/\.git$||'                   \
 		| fzf --prompt 'Project> '            \
 			  --query="$argv"                 \
