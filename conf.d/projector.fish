@@ -7,5 +7,5 @@ abbr -ga p projector
 if [ -e "$VIRTUAL_ENV" ]
 	source $VIRTUAL_ENV/bin/activate.fish
 else if [ -d ~/.virtualenvs/(basename (pwd)) ]
-	source ~/.virtualenvs/(basename (pwd))
+	source ~/.virtualenvs/(basename (pwd))/bin/activate.fish
 end
