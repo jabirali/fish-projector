@@ -10,6 +10,9 @@ works as a quick and efficient project switcher for the command line.
 If a Python virtual environment with a matching name exists in `~/.virtualenvs/`,
 it is automatically activated after `cd`'ing into the project. If such a virtual 
 environment was already active, it is disabled when switching to another project.
+Finally, if Fish is started in a subdirectory of a Git project with a corresponding
+virtual environment, as may happen if you e.g. start Fish in a project directory
+from `tmux` or `nvim`, this virtual environment is again automatically activated.
 
 To install the plugin via [`fisher`](https://github.com/jorgebucaran/fisher):
 
