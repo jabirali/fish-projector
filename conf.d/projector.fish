@@ -4,9 +4,10 @@
 abbr -ga p projector
 
 # Autoactivate virtual environments.
-set projector (basename (git rev-parse --show-toplevel 2>/dev/null || echo - ))
+set _projector_venv ~/.virtualenvs/(basename (git rev-parse --show-toplevel 2>/dev/null || echo - ))/bin/activate.fish
+
 if [ -e "$VIRTUAL_ENV" ]
-	source $VIRTUAL_ENV/bin/activate.fish
-else if [ -f ~/.virtualenvs/$projector ]
-	source ~/.virtualenvs/$projector
+	source "$VIRTUAL_ENV/bin/activate.fish"
+else if [ -f "$_projector_venv" ]
+	source "$_projector_venv"
 end
