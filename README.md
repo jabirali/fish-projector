@@ -7,6 +7,8 @@ is installed, `README.md` and `README.org` files are shown with syntax highlight
 After selecting a project, `projector` will `cd` into it for you. Thus, this plugin 
 works as a quick and efficient project switcher for the command line.
 
+![screenshot](screenshot.png)
+
 If a Python virtual environment with a matching name exists in `~/.virtualenvs/`,
 it is automatically activated after `cd`'ing into the project. If such a virtual 
 environment was already active, it is disabled when switching to another project.
