@@ -43,4 +43,9 @@ function projector -d 'Open project'
 			deactivate
 		end
 	end
+	
+	# Run any additional commands (like editors).
+	if [ -n "$projector_cmd" ]
+		eval $projector_cmd
+	end
 end

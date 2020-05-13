@@ -25,6 +25,14 @@ also `bat` if you want syntax highlighting. Then set the variable `$projector_di
 to the path where you store your code projects in your `config.fish`, and type `p`
 or `projector` when you want to switch between Git projects. 
 
+If you want to run a specific command after each time you switch projects 
+(e.g. opening an editor), this can be specified via the `$projector_cmd` 
+variable. For instance, to open [`nvim`](https://neovim.io/) automatically
+with an [`fzf.vim`](https://github.com/junegunn/fzf.vim) project browser
+after `cd`'ing into a project, add the following to your `config.fish`:
+
+	set projector_cmd nvim +GFiles
+
 To create Python virtual environments that are recognized by Projector,
 you may also want this:
 
