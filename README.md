@@ -1,39 +1,28 @@
 # Fish Projector
 
-Basically, this plugin lets you type `p` or `projector` in Fish to fuzzy-search for 
-Git projects in your `$projector_dir` via `fd` and `fzf`. When selecting a project,
-see the `README` file of each project as a preview. If the optional dependency `bat`
-is installed, `README.md` and `README.org` files are shown with syntax highlighting.
-After selecting a project, `projector` will `cd` into it for you. Thus, this plugin 
-works as a quick and efficient project switcher for the command line.
+This plugin lets you type `p` or `projector` in Fish to fuzzy-search Git
+projects in your `$projector_dir` via [`fzf`][1]. While selecting a project,
+the `README` file of each project is shown as a preview. When you select a
+project, `projector` will `cd` into it for you. Thus, this plugin serves
+as a quick and efficient project switcher for the command line.
 
 ![screenshot](screenshot.png)
 
-If a Python virtual environment with a matching name exists in `~/.virtualenvs/`,
-it is automatically activated after `cd`'ing into the project. If such a virtual 
-environment was already active, it is disabled when switching to another project.
-Finally, if Fish is started in a subdirectory of a Git project with a corresponding
-virtual environment, as may happen if you e.g. start Fish in a project directory
-from `tmux` or `nvim`, this virtual environment is again automatically activated.
+If the optional dependency [`bat`][2] is installed, `README.md` and `README.org`
+files are shown with syntax highlighting. If [`fd`][3] is installed, it is used
+as a replacement for `find` to scan your project directory. Earlier versions
+of this plugin also handled Python virtual environments, but I have since
+switched to [`direnv`][4], and removed this redundant functionality.
 
 To install the plugin via [`fisher`](https://github.com/jorgebucaran/fisher):
 
     fisher add jabirali/fish-projector
 
-Please make sure that the dependencies `fd` and `fzf` are installed, and optionally
-also `bat` if you want syntax highlighting. Then set the variable `$projector_dir`
-to the path where you store your code projects in your `config.fish`, and type `p`
-or `projector` when you want to switch between Git projects. 
+Please make sure that the dependency `fzf` is installed, and optionally also
+`bat` and `fd`. Then set the variable `$projector_dir` to the path where you
+store your code projects in `config.fish`, and try typing `p` or `projector`.
 
-If you want to run a specific command after each time you switch projects 
-(e.g. opening an editor), this can be specified via the `$projector_cmd` 
-variable. For instance, to open [`nvim`](https://neovim.io/) automatically
-with an [`fzf.vim`](https://github.com/junegunn/fzf.vim) project browser
-after `cd`'ing into a project, add the following to your `config.fish`:
-
-	set projector_cmd nvim +GFiles
-
-To create Python virtual environments that are recognized by Projector,
-you may also want this:
-
-	alias 'mkvenv' 'python3 -m venv ~/.virtualenvs/(basename (pwd))'
+[1]: https://github.com/junegunn/fzf
+[2]: https://github.com/sharkdp/bat
+[3]: https://github.com/sharkdp/fd
+[4]: https://github.com/direnv/direnv

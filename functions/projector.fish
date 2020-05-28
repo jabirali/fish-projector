@@ -7,7 +7,7 @@ function projector -d 'Open project'
 		return 1
 	end
 	
-	# Check what previewer to use.
+	# Check what preview to use.
 	if [ (command -v batcat) ]
 		set preview "batcat -p --color=always"
 	else if [ (command -v bat) ]
@@ -16,36 +16,26 @@ function projector -d 'Open project'
 		set preview "cat"
 	end
 	
-	# Discover and select projects.
-	set -l dir \
-		( fd -HIt d '^\.git$' $projector_dir  \
-		| sed 's|/\.git$||'                   \
-		| fzf --prompt 'Project> '            \
-			  --query="$argv"                 \
-			  --delimiter=/ --with-nth=-1     \
-			  --preview-window right:65%      \
-			  --preview="$preview {..}/README{.md,.org,.txt,} 2>/dev/null" )
-	
-	# Handle the choice made above.
-	if [ -n "$dir" ]
-		# Switch to the selected project.
-		cd "$dir"
-		set -l name (basename (pwd))
-		set -l venv ~/.virtualenvs/$name
-		echo -e "\e[1m:: Opening \"$name\"\e[0m"
-		
-		# Load associated virtualenv.
-		if [ -e "$venv" ]
-			echo -e "\e[1m:: Activating virtualenv\e[0m"
-			source $venv/bin/activate.fish
-		else if type -q deactivate
-			echo -e "\e[1m:: Deactivating virtualenv\e[0m"
-			deactivate
-		end
+	# Check what search to use.
+	if [ (command -v fdfind) ]
+		set search (fdfind -HIt d '^\.git$' $projector_dir | string collect)
+	else if [ (command -v fd) ]
+		set search (fd -HIt d '^\.git$' $projector_dir | string collect)
+	else
+		set search (find $projector_dir -type d -name '.git' | string collect)
 	end
 	
-	# Run any additional commands (like editors).
-	if [ -n "$projector_cmd" ]
-		eval $projector_cmd
+	# Select a project.
+	set project \
+		( echo $search                             \
+		| sed "s|$projector_dir/\(.*\)/\.git|\1|"  \
+		| fzf --prompt 'Project> '                 \
+			  --query="$argv"                      \
+			  --preview-window right:65%           \
+			  --preview="$preview $projector_dir/{..}/README{.md,.org,.txt,} 2>/dev/null" )
+	
+	# Switch to project.
+	if [ -n "$project" ]
+		cd "$projector_dir/$project"
 	end
 end
