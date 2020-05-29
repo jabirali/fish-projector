@@ -22,7 +22,7 @@ function projector -d 'Open project'
 	else if [ (command -v fd) ]
 		set search (fd -HIt d '^\.git$' $projector_dir | string collect)
 	else
-		set search (find $projector_dir -type d -name '.git' | string collect)
+		set search (find -L $projector_dir -type d -name '.git' | string collect)
 	end
 	
 	# Select a project.
