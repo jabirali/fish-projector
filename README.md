@@ -1,10 +1,9 @@
 # Fish Projector
 
-This plugin lets you type `p` or `projector` in Fish to fuzzy-search Git
-projects in your `$projector_dir` via [`fzf`][1]. While selecting a project,
-the `README` file of each project is shown as a preview. When you select a
-project, `projector` will `cd` into it for you. Thus, this plugin serves
-as a quick and efficient project switcher for the command line.
+This plugin lets you fuzzy-search Git projects in a `$projector_dir` via
+[`fzf`][1]. While selecting a project, the `README` of each project is shown as
+a preview. When you select a project, `projector` will `cd` into it for you.
+Thus, this plugin serves as a quick project switcher for the command line.
 
 ![screenshot](screenshot.png)
 
@@ -20,7 +19,12 @@ To install the plugin via [`fisher`](https://github.com/jorgebucaran/fisher):
 
 Please make sure that the dependency `fzf` is installed, and optionally also
 `bat` and `fd`. Then set the variable `$projector_dir` to the path where you
-store your code projects in `config.fish`, and try typing `p` or `projector`.
+store your code projects in `config.fish`, and try typing `projector`.
+
+For extra speed, consider adding `bind \cp projector` or `abbr -ga p projector`
+to your `~/.config.fish`; the former lets you launch projector with the keyboard
+shortcut <kbd>Ctrl</kbd><kbd>p</kbd>, the latter lets you do so by typing `p`.
+
 
 [1]: https://github.com/junegunn/fzf
 [2]: https://github.com/sharkdp/bat
